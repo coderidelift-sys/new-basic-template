@@ -1,66 +1,110 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Laravel 10 Admin Panel Boilerplate
 
-## About Laravel
+Ini adalah sebuah boilerplate atau starter template yang dirancang untuk mempercepat pengembangan aplikasi web dengan Laravel 10. Proyek ini menyediakan fondasi yang kuat dengan fitur-fitur esensial yang sudah terkonfigurasi, memungkinkan developer untuk fokus langsung pada logika bisnis inti aplikasi mereka.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Abstrak
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Tujuan utama dari boilerplate ini adalah untuk menghilangkan pekerjaan berulang dalam menyiapkan proyek baru. Dengan menggunakan template ini, Anda mendapatkan:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Sistem Autentikasi yang lengkap.
+- Manajemen Hak Akses berbasis Peran (RBAC).
+- Contoh modul CRUD (Manajemen Pengguna) yang siap pakai.
+- Tabel data server-side yang interaktif dan efisien.
 
-## Learning Laravel
+## Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Autentikasi Lengkap**: Dibangun menggunakan **Laravel Breeze**, menyediakan fungsionalitas registrasi, login, reset password, dan verifikasi email.
+- **Manajemen Hak Akses (RBAC)**: Diimplementasikan dengan paket `spatie/laravel-permission`, memungkinkan pengelolaan peran dan izin yang fleksibel. Contoh peran `Super Admin` sudah disertakan.
+- **Modul Manajemen Pengguna**: Fitur CRUD (Create, Read, Update, Delete) untuk pengguna sebagai contoh implementasi dan titik awal.
+- **Tabel Data Server-Side**: Menggunakan `yajra/laravel-datatables` untuk menampilkan data dengan paginasi, pencarian, dan sorting yang diproses di sisi server, ideal untuk data dalam jumlah besar.
+- **Struktur Admin Panel**: Area khusus (`/console`) yang dilindungi oleh middleware untuk menempatkan semua menu administrasi.
+- **Enum untuk Peran**: Menggunakan `bensampo/laravel-enum` untuk manajemen peran yang lebih bersih dan terstruktur.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Teknologi & Paket Utama
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Framework**: Laravel 10
+- **PHP**: Versi 8.1+
+- **Frontend**: Vite, Tailwind CSS, Bootstrap
+- **Paket Backend**:
+  - `laravel/breeze`: Scaffolding autentikasi.
+  - `spatie/laravel-permission`: Manajemen peran dan izin.
+  - `yajra/laravel-datatables-oracle`: Tabel data server-side.
+  - `bensampo/laravel-enum`: Untuk pengelolaan Enum.
 
-## Laravel Sponsors
+## Instalasi & Konfigurasi
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Ikuti langkah-langkah berikut untuk menjalankan proyek ini secara lokal.
 
-### Premium Partners
+1.  **Clone repository:**
+    ```bash
+    git clone https://github.com/username/repository-name.git
+    cd repository-name
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2.  **Install dependensi Composer:**
+    ```bash
+    composer install
+    ```
 
-## Contributing
+3.  **Buat file `.env`:**
+    Salin dari contoh yang ada.
+    ```bash
+    cp .env.example .env
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4.  **Generate Application Key:**
+    ```bash
+    php artisan key:generate
+    ```
 
-## Code of Conduct
+5.  **Konfigurasi Database:**
+    Buka file `.env` dan atur koneksi database Anda (DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD).
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+6.  **Jalankan Migrasi & Seeder:**
+    Perintah ini akan membuat struktur tabel dan mengisi data awal yang diperlukan.
+    ```bash
+    php artisan migrate --seed
+    ```
+    *Catatan: Anda mungkin perlu membuat seeder untuk user Super Admin pertama kali.*
 
-## Security Vulnerabilities
+7.  **Install Dependensi Node.js:**
+    ```bash
+    npm install
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+8.  **Compile Aset Frontend:**
+    Untuk pengembangan, jalankan:
+    ```bash
+    npm run dev
+    ```
+    Untuk produksi, jalankan:
+    ```bash
+    npm run build
+    ```
 
-## License
+9.  **Jalankan Server Lokal:**
+    ```bash
+    php artisan serve
+    ```
+    Aplikasi akan tersedia di `http://127.0.0.1:8000`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Memulai
+
+Setelah instalasi, Anda dapat mendaftar sebagai pengguna baru. Untuk mengakses panel admin, Anda perlu memberikan peran 'Super Admin' kepada pengguna Anda. Anda dapat melakukan ini melalui `php artisan tinker` atau dengan membuat seeder khusus.
+
+**Contoh membuat Super Admin via Tinker:**
+```bash
+php artisan tinker
+
+// Cari user Anda
+$user = App\Models\User::where('email', 'emailanda@example.com')->first();
+
+// Berikan peran Super Admin
+$user->assignRole('Super Admin');
+
+// Keluar dari tinker
+exit
+```
+
+Setelah itu, login dan akses panel manajemen pengguna di `/console/users`.
